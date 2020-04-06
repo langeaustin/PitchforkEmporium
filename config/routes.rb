@@ -7,8 +7,11 @@ Rails.application.routes.draw do
       # resources :products
   end
 
-     get 'products' => 'products#index'
+  get 'welcome' => 'welcome#index'
 
-     get 'products/:id' => 'products#show'
+  get 'products' => 'products#index', as: 'products'
 
+  get 'products/:id' => 'products#show', as: 'product'
+
+  get 'about' => 'about#index', as: 'about'
 end
