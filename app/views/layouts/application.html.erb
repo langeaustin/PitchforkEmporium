@@ -17,10 +17,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="welcome">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="products">Products</a>
-        <a class="nav-item nav-link" href="#">Login</a>
-        <a class="nav-item nav-link" href="about">About</a>
+        <a class="nav-item nav-link active"><%= link_to "Products", products_path %><span class="sr-only">(current)</span> </a>
+        <a class="nav-item nav-link"><%= link_to "Login", products_path %></a>
+        <a class="nav-item nav-link"><%= link_to "About us", static_path(permalink: 'about-us') %></a>
+        <a class="nav-item nav-link"><%= link_to "Contact us", static_path(permalink: 'contact') %></a>
       </div>
     </div>
     <form class="form-inline">
