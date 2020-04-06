@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  resources :pages
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
   Rails.application.routes.draw do
+  resources :pages
     root 'welcome#index'
       # resources :products
   end
@@ -13,5 +15,5 @@ Rails.application.routes.draw do
 
   get 'products/:id' => 'products#show', as: 'product'
 
-  get 'about' => 'about#index', as: 'about'
+    # get 'about' => 'about#index', as: 'about'
 end
