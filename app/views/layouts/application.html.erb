@@ -20,12 +20,17 @@
         <a class="nav-item nav-link active"><%= link_to "Products", products_path %><span class="sr-only">(current)</span> </a>
         <a class="nav-item nav-link"><%= link_to "Login", products_path %></a>
         <a class="nav-item nav-link"><%= link_to "About us", static_path(permalink: 'about-us') %></a>
-        <a class="nav-item nav-link"><%= link_to "Contact us", static_path(permalink: 'contact') %></a>
+        <a class="nav-item nav-link"><%= link_to "Contact", static_path(permalink: 'contact') %></a>
       </div>
     </div>
     <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+      <%= form_with(url: "/search", local: true,  method: "get", :class => "form-control mr-sm-2") do %>
+        <%= text_field_tag(:search_term) %>
+        <%= submit_tag("Search", :class => "btn btn-outline-success my-2 my-sm-0") %>
+      <% end %>
+     <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
     </form>
   </nav>
     <%= yield %>
