@@ -1,14 +1,21 @@
 Rails.application.routes.draw do
+  resources :pages
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
   Rails.application.routes.draw do
+  resources :pages
     root 'welcome#index'
       # resources :products
   end
 
-     get 'products' => 'products#index'
+  get 'welcome' => 'welcome#index'
 
-     get 'products/:id' => 'products#show'
+  get 'products' => 'products#index', as: 'products'
 
+  get 'products/:id' => 'products#show', as: 'product'
+
+  get 'static/:permalink' => 'pages#static', as: 'static'
+
+  get 'search' => 'products#search', as: 'search'
 end
