@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   get 'products/:id' => 'products#show', as: 'product'
 
   get 'static/:permalink' => 'pages#static', as: 'static'
+
+  get 'search' => 'products#search', as: 'search'
 end
