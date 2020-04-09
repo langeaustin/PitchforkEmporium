@@ -9,7 +9,10 @@
           <h5 class="card-title"><%= product.name %></h5>
           <h6 class="card-subtitle mb-2 text-muted">CDN$<%= product.price %></h6>
           <p class="card-text"><%= product.description %></p>
-          <a href="#" class="btn btn-primary">Add to cart</a>
+          <% if @cart.include? (product)%>
+          <%= %>
+            <%else %>
+          <%= button_to 'Add To Cart', add_to_cart_path(product.id), method: :post, :class =>'btn btn-primary' %>
         </div>
       </div>
     </div>
