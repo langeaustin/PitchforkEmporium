@@ -3,5 +3,6 @@ class ApplicationController < ActionController::Base
   private
   def load_categories
     @cats = Category.all
+    @cart = Product.find(session[:cart])
   end
 end

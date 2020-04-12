@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
   end
 
   def search
-    if params[:category] == 5
+    if params[:category] == '5'
       @products = Product.where("name LIKE ?", "%#{params[:search_term]}%")
     else
       @products = Product.where("name LIKE ?", "%#{params[:search_term]}%").where("category_id=?",params[:category])
