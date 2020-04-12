@@ -2,10 +2,10 @@
 
 one:
   user_id: MyString
-  order_tax: 1.5
-  order_total: 
+  order_tax: 9.99
+  order_total: 9.99
 
 two:
   user_id: MyString
-  order_tax: 1.5
-  order_total: 
+  order_tax: 9.99
+  order_total: 9.99

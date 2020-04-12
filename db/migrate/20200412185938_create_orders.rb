@@ -3,7 +3,7 @@ class CreateOrders < ActiveRecord::Migration[6.0]
     create_table :orders do |t|
       t.string :user_id
       t.decimal :order_tax
-      t.integer :order_total
+      t.decimal :order_total
 
       t.timestamps
     end

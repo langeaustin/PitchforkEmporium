@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  resources :orders
   resources :pages
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
   Rails.application.routes.draw do
+  resources :orders
   resources :pages
     root 'welcome#index'
       # resources :products
@@ -28,4 +30,6 @@ Rails.application.routes.draw do
   get 'search' => 'products#search', as: 'search'
 
   get 'categories' => 'categories#show', as: 'categories'
+
+  get 'cart' => 'cart#show', as: 'cart'
 end

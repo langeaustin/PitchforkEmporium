@@ -1,0 +1,6 @@
+<h1>Review Your Order:</h1>
+
+<% @cart.each do |product| %>
+  <%= link_to product.name, products_path %>
+  <%= image_tag product.image, :class => "card-img-top", :size => '70x50' %>
+<% end %>
