@@ -12,4 +12,8 @@
 
 <p>Total before tax: <%= @total %></p>
 
-<%= link_to "Login"%> or <%= link_to "Register", new_user_registration_path %> to proceed to checkout
+<% if current_user %>
+  <%= button_to "Checkout", checkout_create_path, class: "btn btn-primary" %>
+  <%else %>
+<%= link_to "Login"%> or <%= link_to "Register", new_user_registration_path %> to proceed to checkout %>
+<% end %>
