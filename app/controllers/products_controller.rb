@@ -37,6 +37,6 @@ class ProductsController < ApplicationController
   end
 
   def initialize_session
-    session[:cart] ||= []
+    session[:cart] = []
   end
 end
