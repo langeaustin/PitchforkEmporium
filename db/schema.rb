@@ -90,6 +90,14 @@ ActiveRecord::Schema.define(version: 2020_04_13_000147) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "user_id"
+    t.decimal "order_tax"
+    t.decimal "order_total"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "pages", force: :cascade do |t|
     t.string "title"
     t.text "content"
