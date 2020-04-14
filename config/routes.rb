@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :customers
   devise_for :users
   resources :orders
   resources :pages
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   Rails.application.routes.draw do
+  resources :customers
   resources :orders
   resources :pages
     root 'welcome#index'

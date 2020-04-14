@@ -5,6 +5,7 @@ class CreateCustomers < ActiveRecord::Migration[6.0]
       t.string :province
       t.string :address
       t.integer :order_id
+      t.integer :user_id
 
       t.timestamps
     end
