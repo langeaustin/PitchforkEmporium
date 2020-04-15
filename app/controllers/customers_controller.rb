@@ -1,4 +1,4 @@
-class CustomersController < InheritedResources::Base
+class CustomersController < ApplicationController
   before_action :provinces_load
   private
 
@@ -12,9 +12,13 @@ class CustomersController < InheritedResources::Base
 
   end
 
-
   def new
-    @current.user = current_user
-    
+    @customer = Customer.new
+  end
+
+  def create
+    @customer = Customer.new(customer_params)
+    @customer.user = current_user
+    @customer.save
   end
 end
