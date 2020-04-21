@@ -1,16 +1,5 @@
 class CustomersController < ApplicationController
   before_action :provinces_load
-  private
-
-  def customer_params
-    params.require(:customer).permit(:full_name, :province, :address, :order_id)
-
-  end
-
-  def provinces_load
-  @provinces = Province.all
-
-  end
 
   def new
     @customer = Customer.new
@@ -19,6 +8,20 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     @customer.user = current_user
-    @customer.save
+    if @customer.save
+      redirect_to checkout_test_path
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def customer_params
+    params.require(:customer).permit(:full_name, :province, :address)
+  end
+
+  def provinces_load
+    @provinces = Province.all
   end
 end
