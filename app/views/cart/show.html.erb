@@ -10,7 +10,14 @@
   <br/>
 <% end %>
 
+<% @custprovince = current_user.customer.province  %>
+<% @province = Province.find_by_id(@custprovince.to_i) %>
+
 <p>Total before tax: <%= @total %></p>
+<p>PST: <%= @total * @province.tax %></p>
+<p>GST: <%= @total * 0.05 %></p>
+<p>HST: <%= @total *  (0.05 + @province.tax)  %></p>
+<p>Total after tax: <%= @total * (@province.tax + 1.05)  %></p>
 
 <% if current_user %>
   <%= button_to "Checkout", new_customer_path, method: :get, class: "btn btn-primary" %>

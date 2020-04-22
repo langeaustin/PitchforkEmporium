@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   def load_categories
     @cats = Category.all
     @cart = Product.find(session[:cart])
+    @provinces = Province.all
   end
 
   def initialize_session
