@@ -1,0 +1,26 @@
+<h1>Review Your Order:</h1>
+<% @total = 0 %>
+<% @cart.each do |product| %>
+  <%= link_to product.name, product_path(product) %>
+  <p>Quantity:  <input type="number" size="20px"></p>
+  <p>Price: <%= product.price %></p>
+  <% @total += product.price %>
+  <%= button_to "Remove", remove_from_cart_path(product), method: :delete, class: "btn btn-danger"%>
+  <br/>
+  <br/>
+<% end %>
+
+<% @custprovince = current_user.customer.province  %>
+<% @province = Province.find_by_id(@custprovince.to_i) %>
+
+<p>Total before tax: <%= @total %></p>
+<p>PST: <%= @total * @province.tax %></p>
+<p>GST: <%= @total * 0.05 %></p>
+<p>HST: <%= @total *  (0.05 + @province.tax)  %></p>
+<p>Total after tax: <%= @total * (@province.tax + 1.05)  %></p>
+
+<% if current_user %>
+  <%= button_to "Checkout", new_customer_path, method: :get, class: "btn btn-primary" %>
+  <%else %>
+<%= link_to "Login"%> or <%= link_to "Register", new_user_registration_path %> to proceed to checkout %>
+<% end %>
