@@ -2,7 +2,7 @@
 class CheckoutController < ApplicationController
   def create
     @cart = Product.find(session[:cart])
-    @user = current_user
+
     items = []
 
     @cart.each do |cart_item|
@@ -26,9 +26,14 @@ class CheckoutController < ApplicationController
         cancel_url: checkout_cancel_url
     )
 
+    @total = 0
+    @cart.each do |product|
+      @total += product.price
+    end
+
     @order = Order.create(user_id: current_user.id,
                           order_tax: @provinces.first.tax,
-                          order_total: 0,
+                          order_total: @total,
                           payment_id: @session.id,
                           paid: true)
     @order.save
